@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,minimum-scale=1,maximum-scale=1">
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="description" content="GA & GTM 使用心得(三) 事件追蹤"/>
+
+
+
+
+  <meta name="keywords" content="GA,GTM,UX," />
+
+
+
+
+
+  <link rel="alternate" href="/default" title="Getter's Life Notes">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=1.1" />
+
+
+
+<link rel="canonical" href="https://getterbeam-blog.web.app/posts/GA-GTM-EventTracking/"/>
+
+
+<meta name="description" content="本篇解釋以下知識：  Event欄位分配  以按鈕為例，透過Variable和Click Text來回傳以精簡的Tag來追蹤大量Button  Regular Expression 幫助寫出更精簡的Trigger  閱讀百分比 ( in SPA 追蹤 )  在SPA(Single Page Application)追蹤時的應做的變通   Event Tracking 可以幫助我們了解 PageV">
+<meta name="keywords" content="GA,GTM,UX">
+<meta property="og:type" content="article">
+<meta property="og:title" content="GA &amp; GTM 使用心得(三) 事件追蹤">
+<meta property="og:url" content="https:&#x2F;&#x2F;getterbeam-blog.web.app&#x2F;posts&#x2F;GA-GTM-EventTracking&#x2F;index.html">
+<meta property="og:site_name" content="Getter&#39;s Life Notes">
+<meta property="og:description" content="本篇解釋以下知識：  Event欄位分配  以按鈕為例，透過Variable和Click Text來回傳以精簡的Tag來追蹤大量Button  Regular Expression 幫助寫出更精簡的Trigger  閱讀百分比 ( in SPA 追蹤 )  在SPA(Single Page Application)追蹤時的應做的變通   Event Tracking 可以幫助我們了解 PageV">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https:&#x2F;&#x2F;getterbeam-blog.web.app&#x2F;posts&#x2F;images&#x2F;image-20191107164617110.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;getterbeam-blog.web.app&#x2F;posts&#x2F;images&#x2F;image-20191107164731183.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;getterbeam-blog.web.app&#x2F;posts&#x2F;images&#x2F;image-20191107172605242.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;getterbeam-blog.web.app&#x2F;posts&#x2F;images&#x2F;image-20191108165102438.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;getterbeam-blog.web.app&#x2F;posts&#x2F;images&#x2F;image-20191108165204068.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;getterbeam-blog.web.app&#x2F;posts&#x2F;images&#x2F;image-20191108165713196.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;getterbeam-blog.web.app&#x2F;posts&#x2F;images&#x2F;image-20191108170322453.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;github.com&#x2F;getterbeam&#x2F;blog-source&#x2F;blob&#x2F;master&#x2F;source&#x2F;images&#x2F;image-20191108170809011.png?raw=true">
+<meta property="og:updated_time" content="2019-11-04T08:57:40.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;getterbeam-blog.web.app&#x2F;posts&#x2F;images&#x2F;image-20191107164617110.png">
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=1.1" />
+<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet'>
+
+
+
+
+
+<script type="text/javascript">
+  var themeConfig = {
+    fancybox: {
+      enable: false
+    },
+  };
+</script>
+
+
+
+
+  
+
+
+
+    <title> GA & GTM 使用心得(三) 事件追蹤 - Getter's Life Notes </title>
+  </head>
+
+  <body>
+    <div id="page">
+      <header id="masthead"><div class="site-header-inner">
+    <h1 class="site-title">
+        <a href="/." class="logo">Getter's Life Notes</a>
+    </h1>
+
+    <nav id="nav-top">
+        
+            <ul id="menu-top" class="nav-top-items">
+                
+                    <li class="menu-item">
+                        <a href="/about">
+                            
+                            
+                                關於本站
+                            
+                        </a>
+                    </li>
+                
+                    <li class="menu-item">
+                        <a href="/categories/SVG%E7%A0%94%E7%A9%B6">
+                            
+                            
+                                SVG研究
+                            
+                        </a>
+                    </li>
+                
+                    <li class="menu-item">
+                        <a href="/categories/%E7%B6%B1%E7%AB%99%E6%95%B8%E6%93%9A%E5%88%86%E6%9E%90/">
+                            
+                            
+                                UX量化研究
+                            
+                        </a>
+                    </li>
+                
+                    <li class="menu-item">
+                        <a href="https://getterbeam.github.io/?id=blog" target="_blank" rel="noopener">
+                            
+                            
+                                作品集
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        
+  </nav>
+</div>
+
+      </header>
+      <div id="content">
+        
+    <div id="primary">
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          GA & GTM 使用心得(三) 事件追蹤
+        
+      </h1>
+
+      <time class="post-time">
+          Nov 04 2019
+      </time>
+    </header>
+
+
+
+    
+            <div class="post-content">
+            <p> 本篇解釋以下知識：</p>
+<ol>
+<li>Event欄位分配 </li>
+<li>以按鈕為例，透過Variable和Click Text來回傳以精簡的Tag來追蹤大量Button </li>
+<li>Regular Expression 幫助寫出更精簡的Trigger </li>
+<li>閱讀百分比 ( in SPA 追蹤 ) </li>
+<li>在SPA(Single Page Application)追蹤時的應做的變通 </li>
+</ol>
+<p>Event Tracking 可以幫助我們了解 PageView以外的使用者動作，</p>
+<p>但需要預想好欲偵測哪些互動事件。</p>
+<h1 id="Event-欄位分配"><a href="#Event-欄位分配" class="headerlink" title="Event 欄位分配"></a>Event 欄位分配<br></h1><p>以GTM為例，每當User做了某個動作(觸發Trigger)時，GTM會回傳一個Event給GA，GA在記錄Event時，可以用3個欄位來定義發生了什麼事： Category、Action、Label <br></p>
+<img src="../images/image-20191107164617110.png" alt="image-20191107164617110" style="text-align: left;">
+
+<img src="../images/image-20191107164731183.png" alt="image-20191107164731183" style="zoom:100%;text-align:left;">
+
+<h3 id="基本的Event，透過-1個Tag-1個Trigger-GA追蹤ID就可完成"><a href="#基本的Event，透過-1個Tag-1個Trigger-GA追蹤ID就可完成" class="headerlink" title="基本的Event，透過 1個Tag + 1個Trigger + GA追蹤ID就可完成"></a>基本的Event，透過 1個Tag + 1個Trigger + GA追蹤ID就可完成</h3><h1 id="用少數Tag-Trigger-Variable追蹤大量同類型事件"><a href="#用少數Tag-Trigger-Variable追蹤大量同類型事件" class="headerlink" title="用少數Tag/Trigger/Variable追蹤大量同類型事件"></a>用少數Tag/Trigger/Variable追蹤大量同類型事件</h1><p>但如果有10個按鈕要追蹤，就需要 10 組 Tag &amp; Trigger，管理的複雑性就會大增，如圖：</p>
+<p><img src="../images/image-20191107172605242.png" alt="image-20191107172605242"></p>
+<p>對此，我們可以用 2 種方式來簡化需設定的Tag與Trigger數量：</p>
+<h3 id="1-回傳「變數-Variable」而非純文字給-Category-Action-Label欄位"><a href="#1-回傳「變數-Variable」而非純文字給-Category-Action-Label欄位" class="headerlink" title="1. 回傳「變數 Variable」而非純文字給 Category/Action/Label欄位"></a>1. 回傳「變數 Variable」而非純文字給 Category/Action/Label欄位</h3><h3 id="2-在Trigger中善用CSS-Selector，讓一個Trigger可偵測多顆相似的按鈕點擊事件"><a href="#2-在Trigger中善用CSS-Selector，讓一個Trigger可偵測多顆相似的按鈕點擊事件" class="headerlink" title="2. 在Trigger中善用CSS Selector，讓一個Trigger可偵測多顆相似的按鈕點擊事件"></a>2. 在Trigger中善用CSS Selector，讓一個Trigger可偵測多顆相似的按鈕點擊事件</h3><hr>
+<h3 id="1-自訂變數"><a href="#1-自訂變數" class="headerlink" title="1, 自訂變數"></a>1, 自訂變數</h3><p><code>{ { Click Text } }<code> 是很好用的GTM內建變數，可以回傳觸發本次事件的Dom元素中的文字。</code></code></p>
+<p>但如果要回傳的文字是在觸發者外層，或回傳的文字本身只需截取其中的一部份，則需寫自訂JS來達成。</p>
+<p>例例1:Modal彈窗中，我想取彈窗標題回傳為 GA Event Action值時，透過JS向外找被觸發按鈕的父層彈窗、再向內找彈窗的標題(如圖，當我想抓"請填寫您的廣告目的"時)</p>
+<p><img src="../images/image-20191108165102438.png" alt="image-20191108165102438"></p>
+<pre>
+function() {
+ var e = { { Click Element } };
+    // 1.往上找到最近的 "class開頭為chart_layout_"的parent,再用queryselector向下找特定children
+     var closestClassText = e.closest(".el-dialog").querySelector(".el-dialog__header");
+    // 2.回傳目標物件內的所有文字
+    return closestClassText.innerText;
+}
+</pre>
+
+<p><img src="../images/image-20191108165204068.png" alt="image-20191108165204068"></p>
+<p>案例2： 按鈕文字為"輸出選取項目(2)"時，我只想取數字2，則用自訂變數：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">function()&#123;</span><br><span class="line">  var txt = &#123; &#123; Click Text &#125; &#125;;</span><br><span class="line">  var btn_name = txt.match(/\d/g).toString();</span><br><span class="line">  return btn_name;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-CSS-Selector"><a href="#2-CSS-Selector" class="headerlink" title="2. CSS Selector"></a>2. CSS Selector</h3><p>當數個欲偵測的元素有相同的class時，可用CSS Selector來找</p>
+<p><img src="../images/image-20191108165713196.png" alt="image-20191108165713196"></p>
+<p>圖中之所以要同時追蹤 .el-button 和 el-button *，是因為當按鈕的DOM結構為下時，只以.el-button為條件會偵測不到其中的文字被點擊到。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;button type=&quot;button&quot; class=&quot;el-button el-button--primary&quot;&gt;</span><br><span class="line">	&lt;span&gt;按鈕文字&lt;/span&gt;</span><br><span class="line">&lt;/button&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Regular-Expression-Regex-可以幫忙做模糊的文字判斷"><a href="#Regular-Expression-Regex-可以幫忙做模糊的文字判斷" class="headerlink" title="Regular Expression ( Regex ) 可以幫忙做模糊的文字判斷"></a>Regular Expression ( Regex ) 可以幫忙做模糊的文字判斷</h3><p>如下圖，此法代表要找開頭為"請填寫您的..."的表單Title</p>
+<p><img src="../images/image-20191108170322453.png" alt="image-20191108170322453"></p>
+<hr>
+<h1 id="閱讀百分比-in-SPA-追蹤"><a href="#閱讀百分比-in-SPA-追蹤" class="headerlink" title="閱讀百分比 ( in SPA 追蹤 )"></a>閱讀百分比 ( in SPA 追蹤 )</h1><p>在SPA中要追閱讀進度百分比很麻煩，</p>
+<p>原本GTM有提供內建的閱讀進度 Trigger。</p>
+<p>可以看User在頁面中，垂直捲動的進度達 25%、50%、n%... 各多少次，</p>
+<p><img src="https://github.com/getterbeam/blog-source/blob/master/source/images/image-20191108170809011.png?raw=true" alt="image-20191108170809011"></p>
+<p>但它只能偵測 <body>的捲動。</body></p>
+<p>就我所用過的 SPA (Vue.js)，可捲動的頁面元素往往是被包在 <div>裡，scroll bar也出現在<div>裡，這時就GTM無法偵測到了。</div></div></p>
+<p>目前只找得到變通的解決方式，就是將頁面中的幾個重要段落，分別偵測它們有沒被看過 ( DOM元素出現在User的View Port 達1秒)。</p>
+<p>然後再依上下的瀏覽順序去看User的瀏覽進度。</p>
+<h1 id="在SPA-Single-Page-Application-追蹤時的應做的變通"><a href="#在SPA-Single-Page-Application-追蹤時的應做的變通" class="headerlink" title="在SPA(Single Page Application)追蹤時的應做的變通"></a>在SPA(Single Page Application)追蹤時的應做的變通</h1><p>除了上述的scroll depth偵測問題外，SPA和傳統網頁不同的是 Page Onload次數不一樣，<br>傳統網頁在上下頁切換時，網址會變、每次都算一次新的Onload。<br>但SPA一直是同一頁，只是局部DOM元素改變了，<br>所以想追蹤換頁，可能會有些Trigger條件要改用history change。</p>
+
+            </div>
+          
+
+    
+      <footer class="post-footer">
+		
+		<div class="post-tags">
+		  
+			<a href="/tags/GA/">GA</a>
+		  
+			<a href="/tags/GTM/">GTM</a>
+		  
+			<a href="/tags/UX/">UX</a>
+		  
+		</div>
+		
+
+        
+        
+  <nav class="post-nav">
+    
+      <a class="prev" href="/posts/%E5%98%97%E8%A9%A6%E4%B8%80%E9%80%B1%E7%9A%84%E7%AD%86%E8%A8%98workflow%E5%BF%83%E5%BE%97/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">嘗試一週的筆記workflow心得</span>
+        <span class="prev-text nav-mobile">Prev</span>
+      </a>
+    
+    
+      <a class="next" href="/posts/GA-GTM-UserID/">
+        <span class="next-text nav-default">GA & GTM 使用心得(二) UserID辨識</span>
+        <span class="prev-text nav-mobile">Next</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
+
+        
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+      </footer>
+    
+  </article>
+
+    </div>
+
+      </div>
+
+      <footer id="colophon"><span class="copyright-year">
+    
+        &copy;
+    
+        2014 -
+    
+    2019
+    <span class="footer-author">Getter.</span>
+    <span class="power-by">
+        Powered by <a class="hexo-link" href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> and <a class="theme-link" href="https://github.com/frostfan/hexo-theme-polarbear" target="_blank" rel="noopener">Polar Bear</a>
+    </span>
+</span>
+
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+    
+
+
+    
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery-3.1.1.min.js"></script>
+  
+
+  
+
+    <script type="text/javascript" src="/js/src/theme.js?v=1.1"></script>
+<script type="text/javascript" src="/js/src/bootstrap.js?v=1.1"></script>
+
+  </body>
+</html>

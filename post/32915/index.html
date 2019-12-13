@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,minimum-scale=1,maximum-scale=1">
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="description" content="SVG 模糊鋸齒問題(shape-rendering)"/>
+
+
+
+
+
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-TJJDPDK');</script>
+<!-- End Google Tag Manager -->
+
+
+
+
+  <link rel="alternate" href="/default" title="Getter's Life Notes">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=1.1" />
+
+
+
+<link rel="canonical" href="https://getterbeam-blog.web.app/post/32915/"/>
+
+
+<meta name="description" content="問題SVG在小尺寸圖(20px*20px以下)時也會面臨渲染的邊界模糊的問題 這時要適時的針對整個&amp;lt;svg&amp;gt;或個別&amp;lt;path&amp;gt;給與shape-rendering屬性。 以此圖為例：       從原尺寸(左)的截圖放大來看(右)，黑線本身與白圓的邊界都是糊的。 但當CSS將svg放大後的渲染結果則不會有這種明顯模糊。    研究html5 – 如何渲染svg元素边缘清晰,同">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SVG 模糊鋸齒問題(shape-rendering)">
+<meta property="og:url" content="https:&#x2F;&#x2F;getterbeam-blog.web.app&#x2F;post&#x2F;32915&#x2F;index.html">
+<meta property="og:site_name" content="Getter&#39;s Life Notes">
+<meta property="og:description" content="問題SVG在小尺寸圖(20px*20px以下)時也會面臨渲染的邊界模糊的問題 這時要適時的針對整個&amp;lt;svg&amp;gt;或個別&amp;lt;path&amp;gt;給與shape-rendering屬性。 以此圖為例：       從原尺寸(左)的截圖放大來看(右)，黑線本身與白圓的邊界都是糊的。 但當CSS將svg放大後的渲染結果則不會有這種明顯模糊。    研究html5 – 如何渲染svg元素边缘清晰,同">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https:&#x2F;&#x2F;getterbeam-blog.web.app&#x2F;images&#x2F;btn-close.svg">
+<meta property="og:image" content="https:&#x2F;&#x2F;getterbeam-blog.web.app&#x2F;images&#x2F;image-20191210135938890.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;getterbeam-blog.web.app&#x2F;images&#x2F;btn-close.svg">
+<meta property="og:image" content="https:&#x2F;&#x2F;getterbeam-blog.web.app&#x2F;images&#x2F;image-20191210152014334.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;getterbeam-blog.web.app&#x2F;images&#x2F;btn-close(外g內o)-5962532.svg">
+<meta property="og:image" content="https:&#x2F;&#x2F;getterbeam-blog.web.app&#x2F;images&#x2F;btn-close(外g內o)-5962541.svg">
+<meta property="og:updated_time" content="2019-12-10T05:48:52.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;getterbeam-blog.web.app&#x2F;images&#x2F;btn-close.svg">
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=1.1" />
+<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet'>
+
+
+  <link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css" />
+
+
+
+
+<script type="text/javascript">
+  var themeConfig = {
+    fancybox: {
+      enable: true
+    },
+  };
+</script>
+
+
+
+
+  
+
+
+
+    <title> SVG 模糊鋸齒問題(shape-rendering) - Getter's Life Notes </title>
+  </head>
+
+  <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TJJDPDK"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <div id="page">
+      <header id="masthead"><div class="site-header-inner">
+    <h1 class="site-title">
+        <a href="/." class="logo">Getter's Life Notes</a>
+    </h1>
+
+    <nav id="nav-top">
+        
+            <ul id="menu-top" class="nav-top-items">
+                
+                    <li class="menu-item">
+                        <a href="/">
+                            
+                            
+                                首頁
+                            
+                        </a>
+                    </li>
+                
+                    <li class="menu-item">
+                        <a href="/about">
+                            
+                            
+                                關於本站
+                            
+                        </a>
+                    </li>
+                
+                    <li class="menu-item">
+                        <a href="/categories/SVG%E7%A0%94%E7%A9%B6">
+                            
+                            
+                                SVG研究
+                            
+                        </a>
+                    </li>
+                
+                    <li class="menu-item">
+                        <a href="/categories/%E7%B6%B1%E7%AB%99%E6%95%B8%E6%93%9A%E5%88%86%E6%9E%90/">
+                            
+                            
+                                綱站數據分析
+                            
+                        </a>
+                    </li>
+                
+                    <li class="menu-item">
+                        <a href="https://getterbeam.github.io/?id=blog" target="_blank" rel="noopener">
+                            
+                            
+                                作品集
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        
+  </nav>
+</div>
+
+      </header>
+      <div id="content">
+        
+        
+            
+                <div id="toc-container">
+                    <div class="toc-article">
+                        <ol class="post-poc"><li class="post-poc-item post-poc-level-1"><a class="post-poc-link" href="#問題"><span class="post-poc-text">問題</span></a></li><li class="post-poc-item post-poc-level-1"><a class="post-poc-link" href="#研究"><span class="post-poc-text">研究</span></a></li><li class="post-poc-item post-poc-level-1"><a class="post-poc-link" href="#解決方案"><span class="post-poc-text">解決方案</span></a></li></ol>
+                    </div>
+                </div>
+            
+         
+
+        
+    <div id="primary">
+        
+  <article class="post">
+
+   
+
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          SVG 模糊鋸齒問題(shape-rendering)
+        
+      </h1>
+
+      <time class="post-time">
+          Dec 10 2019
+      </time>
+    </header>
+
+
+
+
+
+    
+        <div class="post-content">
+        <h1 id="問題"><a href="#問題" class="headerlink" title="問題"></a>問題</h1><p>SVG在小尺寸圖(20px*20px以下)時也會面臨渲染的邊界模糊的問題</p>
+<p>這時要適時的針對整個<code>&lt;svg&gt;</code>或個別<code>&lt;path&gt;</code>給與shape-rendering屬性。</p>
+<p>以此圖為例：</p>
+<img src="/images/btn-close.svg" alt="btn-close" style="zoom:100%;" />
+
+
+
+<img src="/images/image-20191210135938890.png" alt="image-20191210135938890" style="zoom:50%;" />
+
+<p>從原尺寸(左)的截圖放大來看(右)，黑線本身與白圓的邊界都是糊的。</p>
+<p>但當CSS將svg放大後的渲染結果則不會有這種明顯模糊。</p>
+<img src="/images/btn-close.svg" alt="btn-close" style="zoom:500%;" />
+
+<hr>
+<h1 id="研究"><a href="#研究" class="headerlink" title="研究"></a>研究</h1><p><a href="https://codeday.me/bug/20171120/98011.html" target="_blank" rel="noopener">html5 – 如何渲染svg元素边缘清晰,同时仍然保持反锯齿？</a></p>
+<p><a href="https://codeday.me/bug/20181207/435686.html" target="_blank" rel="noopener">html5 – 在应用CSS3时关闭svg上的反锯齿：放大元素？</a></p>
+<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/SVG/Attribute/shape-rendering" target="_blank" rel="noopener">shape-render共有哪些選項？</a></p>
+<p><a href="https://laysent.github.io/til/2019-10-11_shape-rendering" target="_blank" rel="noopener"><strong>shape-rendering的選項效果比較</strong></a></p>
+<p><code>geometricPrecision</code> 的效果是最平滑的，但是边缘清晰度不足；<code>crispEdges</code> 边缘很锐利，但是有一些毛边（越是低分辨率的屏幕，效果越明显）；<code>optimizeSpeed</code> 的显示效果也明显有毛边，不过效果和 <code>crispEdges</code> 略微不同，可以看得出底层使用的算法是不太一样的。</p>
+<p><a href="https://stackoverflow.com/questions/22161624/how-to-render-svg-elements-with-crisp-edges-while-still-keeping-anti-aliasing" target="_blank" rel="noopener">https://stackoverflow.com/questions/22161624/how-to-render-svg-elements-with-crisp-edges-while-still-keeping-anti-aliasing</a></p>
+<p><a href="https://coderwall.com/p/ufldzw/for-crisp-edges-use-anything-but-crispedges" target="_blank" rel="noopener">https://coderwall.com/p/ufldzw/for-crisp-edges-use-anything-but-crispedges</a></p>
+<h1 id="解決方案"><a href="#解決方案" class="headerlink" title="解決方案"></a>解決方案</h1><p><code>geometricPrecision</code>對圓形或彎曲的效果良好，但對直線則帶來多餘的模糊；</p>
+<p><code>optimizeSpeed</code>則對直線有較佳的銳利效果</p>
+<p>因此我對此案例中的SVG，分別給<code>&lt;circle&gt; geometricPrecision</code>，並給<code>&lt;line&gt;</code> <code>optimizeSpeed</code></p>
+<p>效果對比如下</p>
+<img src="/images/image-20191210152014334.png" alt="image-20191210152014334" style="zoom:50%;" />
+
+<img src="/images/btn-close(外g內o)-5962532.svg" alt="btn-close(/images/btn-close(外g內o).svg)"  />
+
+<img src="/images/btn-close(外g內o)-5962541.svg" alt="btn-close(/images/btn-close(外g內o)-5962480.svg)" style="zoom:500%;" />
+        </div>
+    
+
+    
+      <footer class="post-footer">
+      
+
+        
+        
+  <nav class="post-nav">
+    
+      <a class="prev" href="/post/37330/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">js-resource</span>
+        <span class="prev-text nav-mobile">Prev</span>
+      </a>
+    
+    
+      <a class="next" href="/post/63668/">
+        <span class="next-text nav-default">protopie_mir_story</span>
+        <span class="prev-text nav-mobile">Next</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
+
+        
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+      </footer>
+    
+
+ 
+
+  </article>
+
+    </div>
+    
+
+
+        <div id="secondary">
+    
+
+    
+    <section id="tags" class="widget-area widget_categories">
+        <h3 class="widget-title">Categories</h3>
+        <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/SVG%E7%A0%94%E7%A9%B6/">SVG研究</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%BA%92%E5%8B%95%E7%89%B9%E6%95%88/">互動特效</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%94%9F%E6%B4%BB%E8%A8%98%E4%BA%8B/">生活記事</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%9F%A5%E8%AD%98%E7%AE%A1%E7%90%86/">知識管理</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%B6%B1%E7%AB%99%E6%95%B8%E6%93%9A%E5%88%86%E6%9E%90/">綱站數據分析</a><span class="category-list-count">3</span></li></ul>
+    </section>
+
+
+    
+    <section id="tags" class="widget-area widget_tags">
+        <h3 class="widget-title">Tags</h3>
+        <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B7%A5%E4%BD%9C%E5%B0%88%E6%A1%88/" rel="tag">工作專案</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GA/" rel="tag">GA</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GTM/" rel="tag">GTM</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UX/" rel="tag">UX</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Protopie/" rel="tag">Protopie</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cheatsheet/" rel="tag">cheatsheet</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/markdown/" rel="tag">markdown</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/flexbox/" rel="tag">flexbox</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/animation/" rel="tag">animation</a><span class="tag-list-count">1</span></li></ul>
+    </section>
+
+
+</div>
+
+      </div>
+
+      <footer id="colophon"><span class="copyright-year">
+    
+        &copy;
+    
+        2014 -
+    
+    2019
+    <span class="footer-author">Getter.</span>
+    <span class="power-by">
+        Powered by <a class="hexo-link" href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> and <a class="theme-link" href="https://github.com/frostfan/hexo-theme-polarbear" target="_blank" rel="noopener">Polar Bear</a>
+    </span>
+</span>
+
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+    
+    
+
+
+    
+  
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery-3.1.1.min.js"></script>
+  
+
+  
+    <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
+  
+
+    <script type="text/javascript" src="/js/src/theme.js?v=1.1"></script>
+<script type="text/javascript" src="/js/src/bootstrap.js?v=1.1"></script>
+
+  </body>
+</html>

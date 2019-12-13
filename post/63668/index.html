@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,minimum-scale=1,maximum-scale=1">
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="description" content="protopie_mir_story"/>
+
+
+
+
+  <meta name="keywords" content="工作專案,Protopie," />
+
+
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-TJJDPDK');</script>
+<!-- End Google Tag Manager -->
+
+
+
+
+  <link rel="alternate" href="/default" title="Getter's Life Notes">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=1.1" />
+
+
+
+<link rel="canonical" href="https://getterbeam-blog.web.app/post/63668/"/>
+
+
+<meta name="description" content="成果 製作過程廣告自動下滑展開、自動播放影片  當頁面持續下滑(User向下閱讀文章)時，廣告(展開前、小版位)進入Viewport、達成中央， 即觸發下拉展開，露出下層的影片，並在影片露出一半後開始播放。 ※ 要設一個變數，去記錄是否曾經展開過( is_expand=0 or 1)，作為下滑展開的觸發條件，否則可能會發生多次觸發的狀況  按鈕式跑馬燈  用對變數延遲賦值、並監聽該變數來觸發下次動">
+<meta name="keywords" content="工作專案,Protopie">
+<meta property="og:type" content="article">
+<meta property="og:title" content="protopie_mir_story">
+<meta property="og:url" content="https:&#x2F;&#x2F;getterbeam-blog.web.app&#x2F;post&#x2F;63668&#x2F;index.html">
+<meta property="og:site_name" content="Getter&#39;s Life Notes">
+<meta property="og:description" content="成果 製作過程廣告自動下滑展開、自動播放影片  當頁面持續下滑(User向下閱讀文章)時，廣告(展開前、小版位)進入Viewport、達成中央， 即觸發下拉展開，露出下層的影片，並在影片露出一半後開始播放。 ※ 要設一個變數，去記錄是否曾經展開過( is_expand=0 or 1)，作為下滑展開的觸發條件，否則可能會發生多次觸發的狀況  按鈕式跑馬燈  用對變數延遲賦值、並監聽該變數來觸發下次動">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https:&#x2F;&#x2F;getterbeam-blog.web.app&#x2F;images&#x2F;Dec-09-2019%2010-57-36.gif">
+<meta property="og:image" content="https:&#x2F;&#x2F;getterbeam-blog.web.app&#x2F;images&#x2F;image-20191209111810159.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;getterbeam-blog.web.app&#x2F;images&#x2F;Dec-09-2019%2015-59-50.gif">
+<meta property="og:image" content="https:&#x2F;&#x2F;getterbeam-blog.web.app&#x2F;images&#x2F;image-20191209163017721.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;getterbeam-blog.web.app&#x2F;images&#x2F;image-20191209163805191.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;getterbeam-blog.web.app&#x2F;images&#x2F;Dec-09-2019%2016-04-15.gif">
+<meta property="og:image" content="https:&#x2F;&#x2F;getterbeam-blog.web.app&#x2F;images&#x2F;Dec-09-2019%2016-26-25.gif">
+<meta property="og:image" content="https:&#x2F;&#x2F;getterbeam-blog.web.app&#x2F;images&#x2F;image-20191209165441382.png">
+<meta property="og:updated_time" content="2019-12-09T02:29:03.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;getterbeam-blog.web.app&#x2F;images&#x2F;Dec-09-2019%2010-57-36.gif">
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=1.1" />
+<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet'>
+
+
+  <link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css" />
+
+
+
+
+<script type="text/javascript">
+  var themeConfig = {
+    fancybox: {
+      enable: true
+    },
+  };
+</script>
+
+
+
+
+  
+
+
+
+    <title> protopie_mir_story - Getter's Life Notes </title>
+  </head>
+
+  <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TJJDPDK"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <div id="page">
+      <header id="masthead"><div class="site-header-inner">
+    <h1 class="site-title">
+        <a href="/." class="logo">Getter's Life Notes</a>
+    </h1>
+
+    <nav id="nav-top">
+        
+            <ul id="menu-top" class="nav-top-items">
+                
+                    <li class="menu-item">
+                        <a href="/">
+                            
+                            
+                                首頁
+                            
+                        </a>
+                    </li>
+                
+                    <li class="menu-item">
+                        <a href="/about">
+                            
+                            
+                                關於本站
+                            
+                        </a>
+                    </li>
+                
+                    <li class="menu-item">
+                        <a href="/categories/SVG%E7%A0%94%E7%A9%B6">
+                            
+                            
+                                SVG研究
+                            
+                        </a>
+                    </li>
+                
+                    <li class="menu-item">
+                        <a href="/categories/%E7%B6%B1%E7%AB%99%E6%95%B8%E6%93%9A%E5%88%86%E6%9E%90/">
+                            
+                            
+                                綱站數據分析
+                            
+                        </a>
+                    </li>
+                
+                    <li class="menu-item">
+                        <a href="https://getterbeam.github.io/?id=blog" target="_blank" rel="noopener">
+                            
+                            
+                                作品集
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        
+  </nav>
+</div>
+
+      </header>
+      <div id="content">
+        
+        
+            
+                <div id="toc-container">
+                    <div class="toc-article">
+                        <ol class="post-poc"><li class="post-poc-item post-poc-level-1"><a class="post-poc-link" href="#成果"><span class="post-poc-text">成果</span></a></li><li class="post-poc-item post-poc-level-1"><a class="post-poc-link" href="#製作過程"><span class="post-poc-text">製作過程</span></a><ol class="post-poc-child"><li class="post-poc-item post-poc-level-2"><a class="post-poc-link" href="#廣告自動下滑展開、自動播放影片"><span class="post-poc-text">廣告自動下滑展開、自動播放影片</span></a></li><li class="post-poc-item post-poc-level-2"><a class="post-poc-link" href="#按鈕式跑馬燈"><span class="post-poc-text">按鈕式跑馬燈</span></a><ol class="post-poc-child"><li class="post-poc-item post-poc-level-3"><a class="post-poc-link" href="#用對變數延遲賦值、並監聽該變數來觸發下次動作的方式，來產生Loop"><span class="post-poc-text">用對變數延遲賦值、並監聽該變數來觸發下次動作的方式，來產生Loop</span></a></li><li class="post-poc-item post-poc-level-3"><a class="post-poc-link" href="#並在Page-Onload時，先觸發第一次"><span class="post-poc-text">並在Page Onload時，先觸發第一次</span></a></li><li class="post-poc-item post-poc-level-3"><a class="post-poc-link" href="#按鈕Highlight與否，我用透明度變化來達成"><span class="post-poc-text">按鈕Highlight與否，我用透明度變化來達成</span></a></li><li class="post-poc-item post-poc-level-3"><a class="post-poc-link" href="#之後要停止跑馬燈時，只要「停止」該變數就好"><span class="post-poc-text">之後要停止跑馬燈時，只要「停止」該變數就好</span></a></li></ol></li><li class="post-poc-item post-poc-level-2"><a class="post-poc-link" href="#點擊按鈕-→強制展開版位，顯示大Banner"><span class="post-poc-text">點擊按鈕 →強制展開版位，顯示大Banner</span></a></li><li class="post-poc-item post-poc-level-2"><a class="post-poc-link" href="#進度條式跑馬燈"><span class="post-poc-text">***進度條式跑馬燈</span></a></li></ol></li></ol>
+                    </div>
+                </div>
+            
+         
+
+        
+    <div id="primary">
+        
+  <article class="post">
+
+   
+
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          protopie_mir_story
+        
+      </h1>
+
+      <time class="post-time">
+          Dec 09 2019
+      </time>
+    </header>
+
+
+
+
+
+    
+        <div class="post-content">
+        <h1 id="成果"><a href="#成果" class="headerlink" title="成果"></a>成果</h1><p><video width="100%" height="400" src="/video/mirstory_demo.mp4" controls="controls"></video></p>
+<h1 id="製作過程"><a href="#製作過程" class="headerlink" title="製作過程"></a>製作過程</h1><h2 id="廣告自動下滑展開、自動播放影片"><a href="#廣告自動下滑展開、自動播放影片" class="headerlink" title="廣告自動下滑展開、自動播放影片"></a>廣告自動下滑展開、自動播放影片</h2><img src="/images/Dec-09-2019 10-57-36.gif" alt="Dec-09-2019 10-57-36" style="zoom:50%;" />
+
+<p>當頁面持續下滑(User向下閱讀文章)時，廣告(展開前、小版位)進入Viewport、達成中央，</p>
+<p>即觸發下拉展開，露出下層的影片，並在影片露出一半後開始播放。</p>
+<p>※ 要設一個變數，去記錄是否曾經展開過( is_expand=0 or 1)，作為下滑展開的觸發條件，否則可能會發生多次觸發的狀況</p>
+<p><img src="/images/image-20191209111810159.png" alt="image-20191209111810159"></p>
+<h2 id="按鈕式跑馬燈"><a href="#按鈕式跑馬燈" class="headerlink" title="按鈕式跑馬燈"></a>按鈕式跑馬燈</h2><img src="/images/Dec-09-2019 15-59-50.gif" alt="Dec-09-2019 15-59-50"  />
+
+<h3 id="用對變數延遲賦值、並監聽該變數來觸發下次動作的方式，來產生Loop"><a href="#用對變數延遲賦值、並監聽該變數來觸發下次動作的方式，來產生Loop" class="headerlink" title="用對變數延遲賦值、並監聽該變數來觸發下次動作的方式，來產生Loop"></a>用對變數延遲賦值、並監聽該變數來觸發下次動作的方式，來產生Loop</h3><p><img src="/images/image-20191209163017721.png" alt="image-20191209163017721"></p>
+<h3 id="並在Page-Onload時，先觸發第一次"><a href="#並在Page-Onload時，先觸發第一次" class="headerlink" title="並在Page Onload時，先觸發第一次"></a>並在Page Onload時，先觸發第一次</h3><h3 id="按鈕Highlight與否，我用透明度變化來達成"><a href="#按鈕Highlight與否，我用透明度變化來達成" class="headerlink" title="按鈕Highlight與否，我用透明度變化來達成"></a>按鈕Highlight與否，我用透明度變化來達成</h3><h3 id="之後要停止跑馬燈時，只要「停止」該變數就好"><a href="#之後要停止跑馬燈時，只要「停止」該變數就好" class="headerlink" title="之後要停止跑馬燈時，只要「停止」該變數就好"></a>之後要停止跑馬燈時，只要「停止」該變數就好</h3><p><img src="/images/image-20191209163805191.png" alt="image-20191209163805191"></p>
+<h2 id="點擊按鈕-→強制展開版位，顯示大Banner"><a href="#點擊按鈕-→強制展開版位，顯示大Banner" class="headerlink" title="點擊按鈕 →強制展開版位，顯示大Banner"></a>點擊按鈕 →強制展開版位，顯示大Banner</h2><img src="/images/Dec-09-2019 16-04-15.gif" alt="Dec-09-2019 16-04-15"  />
+
+<ul>
+<li><p>User點擊時，三個按鈕上滑至廣告區頂部</p>
+</li>
+<li><p>Video+小Banner區塊改為單張大banner</p>
+</li>
+<li><p>下方浮現close button</p>
+<ul>
+<li>停止按鈕跑馬燈，並啟動進度條式跑馬燈</li>
+</ul>
+</li>
+</ul>
+<h2 id="進度條式跑馬燈"><a href="#進度條式跑馬燈" class="headerlink" title="***進度條式跑馬燈"></a>***進度條式跑馬燈</h2><img src="/images/Dec-09-2019 16-26-25.gif" alt="Dec-09-2019 16-26-25"  />
+
+<ul>
+<li><p>在User未點擊的情況下，大Banner每n秒一次切換，三個按鈕作為進度條倒數提示</p>
+</li>
+<li><p>User點擊任一按鈕後立即切換，進度條直接重置</p>
+</li>
+<li><p>同樣用延遲變數+監聽的變數可達成”每n秒一次”的loop</p>
+<ul>
+<li>※ 特別注意：要在每次loop開頭先中止所有的進度條動作。以免因User連點而造成連續動作的狀況</li>
+</ul>
+</li>
+</ul>
+<p><img src="/images/image-20191209165441382.png" alt="image-20191209165441382"></p>
+
+        </div>
+    
+
+    
+      <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+          <a href="/tags/%E5%B7%A5%E4%BD%9C%E5%B0%88%E6%A1%88/">工作專案</a>
+          
+          <a href="/tags/Protopie/">Protopie</a>
+          
+        </div>
+      
+
+        
+        
+  <nav class="post-nav">
+    
+      <a class="prev" href="/post/32915/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">SVG 模糊鋸齒問題(shape-rendering)</span>
+        <span class="prev-text nav-mobile">Prev</span>
+      </a>
+    
+    
+      <a class="next" href="/post/20061/">
+        <span class="next-text nav-default">對Hexo主題-Polarbear的改造(五) Firebase GA/GTM</span>
+        <span class="prev-text nav-mobile">Next</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
+
+        
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+      </footer>
+    
+
+ 
+
+  </article>
+
+    </div>
+    
+
+
+        <div id="secondary">
+    
+
+    
+    <section id="tags" class="widget-area widget_categories">
+        <h3 class="widget-title">Categories</h3>
+        <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/SVG%E7%A0%94%E7%A9%B6/">SVG研究</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%BA%92%E5%8B%95%E7%89%B9%E6%95%88/">互動特效</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%94%9F%E6%B4%BB%E8%A8%98%E4%BA%8B/">生活記事</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%9F%A5%E8%AD%98%E7%AE%A1%E7%90%86/">知識管理</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%B6%B1%E7%AB%99%E6%95%B8%E6%93%9A%E5%88%86%E6%9E%90/">綱站數據分析</a><span class="category-list-count">3</span></li></ul>
+    </section>
+
+
+    
+    <section id="tags" class="widget-area widget_tags">
+        <h3 class="widget-title">Tags</h3>
+        <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B7%A5%E4%BD%9C%E5%B0%88%E6%A1%88/" rel="tag">工作專案</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GA/" rel="tag">GA</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GTM/" rel="tag">GTM</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UX/" rel="tag">UX</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Protopie/" rel="tag">Protopie</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cheatsheet/" rel="tag">cheatsheet</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/markdown/" rel="tag">markdown</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/flexbox/" rel="tag">flexbox</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/animation/" rel="tag">animation</a><span class="tag-list-count">1</span></li></ul>
+    </section>
+
+
+</div>
+
+      </div>
+
+      <footer id="colophon"><span class="copyright-year">
+    
+        &copy;
+    
+        2014 -
+    
+    2019
+    <span class="footer-author">Getter.</span>
+    <span class="power-by">
+        Powered by <a class="hexo-link" href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> and <a class="theme-link" href="https://github.com/frostfan/hexo-theme-polarbear" target="_blank" rel="noopener">Polar Bear</a>
+    </span>
+</span>
+
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+    
+    
+
+
+    
+  
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery-3.1.1.min.js"></script>
+  
+
+  
+    <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
+  
+
+    <script type="text/javascript" src="/js/src/theme.js?v=1.1"></script>
+<script type="text/javascript" src="/js/src/bootstrap.js?v=1.1"></script>
+
+  </body>
+</html>

@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,minimum-scale=1,maximum-scale=1">
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="description" content="對Hexo主題-Polarbear的改造(一)"/>
+
+
+
+
+  <meta name="keywords" content="Hexo," />
+
+
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-TJJDPDK');</script>
+<!-- End Google Tag Manager -->
+
+
+
+
+  <link rel="alternate" href="/default" title="Getter's Life Notes">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=1.1" />
+
+
+
+<link rel="canonical" href="https://getterbeam-blog.web.app/post/39685/"/>
+
+
+<meta name="description" content="緣起選polarbear作主題Hexo預設主題為 Landscape，中規中矩，只是比較工程; Next很多人用，所以我想加功能或做調整的話，有很多網友心得可參考； 但目前我選用Polarbear，因為它在只有基本功能的情況下，最為簡潔、有設計感。 目前我最重要的是多寫文、並串起我的知識庫，所以暫時將各種花式功能拋在腦後、專注寫作 問題預設的首頁很理想，左邊是內容區、右邊則有導航widget，但是">
+<meta name="keywords" content="Hexo">
+<meta property="og:type" content="article">
+<meta property="og:title" content="對Hexo主題-Polarbear的改造(一)">
+<meta property="og:url" content="https:&#x2F;&#x2F;getterbeam-blog.web.app&#x2F;post&#x2F;39685&#x2F;index.html">
+<meta property="og:site_name" content="Getter&#39;s Life Notes">
+<meta property="og:description" content="緣起選polarbear作主題Hexo預設主題為 Landscape，中規中矩，只是比較工程; Next很多人用，所以我想加功能或做調整的話，有很多網友心得可參考； 但目前我選用Polarbear，因為它在只有基本功能的情況下，最為簡潔、有設計感。 目前我最重要的是多寫文、並串起我的知識庫，所以暫時將各種花式功能拋在腦後、專注寫作 問題預設的首頁很理想，左邊是內容區、右邊則有導航widget，但是">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https:&#x2F;&#x2F;getterbeam-blog.web.app&#x2F;images&#x2F;image-20191114095653207.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;getterbeam-blog.web.app&#x2F;images&#x2F;image-20191114100053160.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;getterbeam-blog.web.app&#x2F;images&#x2F;image-20191114100123269.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;getterbeam-blog.web.app&#x2F;images&#x2F;image-20191114100534202.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;getterbeam-blog.web.app&#x2F;images&#x2F;image-20191114100557566.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;getterbeam-blog.web.app&#x2F;images&#x2F;image-20191114100924027.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;getterbeam-blog.web.app&#x2F;images&#x2F;image-20191114101308993.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;getterbeam-blog.web.app&#x2F;images&#x2F;image-20191114103223927.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;getterbeam-blog.web.app&#x2F;images&#x2F;image-20191114103241751.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;getterbeam-blog.web.app&#x2F;images&#x2F;image-20191117224112168.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;getterbeam-blog.web.app&#x2F;images&#x2F;image-20191117223913673.png">
+<meta property="og:updated_time" content="2019-11-14T01:33:14.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;getterbeam-blog.web.app&#x2F;images&#x2F;image-20191114095653207.png">
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=1.1" />
+<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet'>
+
+
+  <link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css" />
+
+
+
+
+<script type="text/javascript">
+  var themeConfig = {
+    fancybox: {
+      enable: true
+    },
+  };
+</script>
+
+
+
+
+  
+
+
+
+    <title> 對Hexo主題-Polarbear的改造(一) - Getter's Life Notes </title>
+  </head>
+
+  <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TJJDPDK"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <div id="page">
+      <header id="masthead"><div class="site-header-inner">
+    <h1 class="site-title">
+        <a href="/." class="logo">Getter's Life Notes</a>
+    </h1>
+
+    <nav id="nav-top">
+        
+            <ul id="menu-top" class="nav-top-items">
+                
+                    <li class="menu-item">
+                        <a href="/">
+                            
+                            
+                                首頁
+                            
+                        </a>
+                    </li>
+                
+                    <li class="menu-item">
+                        <a href="/about">
+                            
+                            
+                                關於本站
+                            
+                        </a>
+                    </li>
+                
+                    <li class="menu-item">
+                        <a href="/categories/SVG%E7%A0%94%E7%A9%B6">
+                            
+                            
+                                SVG研究
+                            
+                        </a>
+                    </li>
+                
+                    <li class="menu-item">
+                        <a href="/categories/%E7%B6%B1%E7%AB%99%E6%95%B8%E6%93%9A%E5%88%86%E6%9E%90/">
+                            
+                            
+                                綱站數據分析
+                            
+                        </a>
+                    </li>
+                
+                    <li class="menu-item">
+                        <a href="https://getterbeam.github.io/?id=blog" target="_blank" rel="noopener">
+                            
+                            
+                                作品集
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        
+  </nav>
+</div>
+
+      </header>
+      <div id="content">
+        
+        
+            
+                <div id="toc-container">
+                    <div class="toc-article">
+                        <ol class="post-poc"><li class="post-poc-item post-poc-level-1"><a class="post-poc-link" href="#緣起"><span class="post-poc-text">緣起</span></a><ol class="post-poc-child"><li class="post-poc-item post-poc-level-2"><a class="post-poc-link" href="#選polarbear作主題"><span class="post-poc-text">選polarbear作主題</span></a></li></ol></li><li class="post-poc-item post-poc-level-1"><a class="post-poc-link" href="#問題"><span class="post-poc-text">問題</span></a><ol class="post-poc-child"><li class="post-poc-item post-poc-level-2"><a class="post-poc-link" href="#預設的首頁很理想，左邊是內容區、右邊則有導航widget，但是…"><span class="post-poc-text">預設的首頁很理想，左邊是內容區、右邊則有導航widget，但是…</span></a></li><li class="post-poc-item post-poc-level-2"><a class="post-poc-link" href="#內文頁與分類頁沒有右側導航widget"><span class="post-poc-text">內文頁與分類頁沒有右側導航widget</span></a></li><li class="post-poc-item post-poc-level-2"><a class="post-poc-link" href="#我在實際使用上覺得不便，所以要做改造"><span class="post-poc-text">我在實際使用上覺得不便，所以要做改造</span></a></li></ol></li><li class="post-poc-item post-poc-level-1"><a class="post-poc-link" href="#改造"><span class="post-poc-text">改造</span></a><ol class="post-poc-child"><li class="post-poc-item post-poc-level-2"><a class="post-poc-link" href="#複製導航widget到首頁以外處，再調CSS"><span class="post-poc-text">複製導航widget到首頁以外處，再調CSS</span></a></li><li class="post-poc-item post-poc-level-2"><a class="post-poc-link" href="#內文頁好了，但分類頁問題"><span class="post-poc-text">內文頁好了，但分類頁問題</span></a></li><li class="post-poc-item post-poc-level-2"><a class="post-poc-link" href="#以CSS調整跑版問題"><span class="post-poc-text">以CSS調整跑版問題</span></a><ol class="post-poc-child"><li class="post-poc-item post-poc-level-3"><a class="post-poc-link" href="#1-先加："><span class="post-poc-text">1.先加：</span></a></li><li class="post-poc-item post-poc-level-3"><a class="post-poc-link" href="#2-用Flexbox來修，讓Footer在內容少時恆置底；且內容超過一頁長時也能顯示於最下方"><span class="post-poc-text">2.用Flexbox來修，讓Footer在內容少時恆置底；且內容超過一頁長時也能顯示於最下方</span></a></li></ol></li><li class="post-poc-item post-poc-level-2"><a class="post-poc-link" href="#修正首頁出現重複右側widget的問題"><span class="post-poc-text">修正首頁出現重複右側widget的問題</span></a></li></ol></li></ol>
+                    </div>
+                </div>
+            
+         
+
+        
+    <div id="primary">
+        
+  <article class="post">
+
+   
+
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          對Hexo主題-Polarbear的改造(一)
+        
+      </h1>
+
+      <time class="post-time">
+          Nov 14 2019
+      </time>
+    </header>
+
+
+
+
+
+    
+        <div class="post-content">
+        <h1 id="緣起"><a href="#緣起" class="headerlink" title="緣起"></a>緣起</h1><h2 id="選polarbear作主題"><a href="#選polarbear作主題" class="headerlink" title="選polarbear作主題"></a>選polarbear作主題</h2><p>Hexo預設主題為 Landscape，中規中矩，只是比較工程;</p>
+<p>Next很多人用，所以我想加功能或做調整的話，有很多網友心得可參考；</p>
+<p>但目前我選用Polarbear，因為它在只有基本功能的情況下，最為簡潔、有設計感。</p>
+<p><strong>目前我最重要的是多寫文、並串起我的知識庫，所以暫時將各種花式功能拋在腦後、專注寫作</strong></p>
+<h1 id="問題"><a href="#問題" class="headerlink" title="問題"></a>問題</h1><h2 id="預設的首頁很理想，左邊是內容區、右邊則有導航widget，但是…"><a href="#預設的首頁很理想，左邊是內容區、右邊則有導航widget，但是…" class="headerlink" title="預設的首頁很理想，左邊是內容區、右邊則有導航widget，但是…"></a>預設的首頁很理想，左邊是內容區、右邊則有導航widget，但是…</h2><p><img src="/images/image-20191114095653207.png" alt="image-20191114095653207"></p>
+<h2 id="內文頁與分類頁沒有右側導航widget"><a href="#內文頁與分類頁沒有右側導航widget" class="headerlink" title="內文頁與分類頁沒有右側導航widget"></a>內文頁與分類頁沒有右側導航widget</h2><p><img src="/images/image-20191114100053160.png" alt="image-20191114100053160"></p>
+<p><img src="/images/image-20191114100123269.png" alt="image-20191114100123269"></p>
+<h2 id="我在實際使用上覺得不便，所以要做改造"><a href="#我在實際使用上覺得不便，所以要做改造" class="headerlink" title="我在實際使用上覺得不便，所以要做改造"></a>我在實際使用上覺得不便，所以要做改造</h2><h1 id="改造"><a href="#改造" class="headerlink" title="改造"></a>改造</h1><h2 id="複製導航widget到首頁以外處，再調CSS"><a href="#複製導航widget到首頁以外處，再調CSS" class="headerlink" title="複製導航widget到首頁以外處，再調CSS"></a>複製導航widget到首頁以外處，再調CSS</h2><img src="/images/image-20191114100534202.png" alt="image-20191114100534202" style="zoom:50%;" />
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#primary &#123;</span><br><span class="line">  width: 73%;</span><br><span class="line">  float: left;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="內文頁好了，但分類頁問題"><a href="#內文頁好了，但分類頁問題" class="headerlink" title="內文頁好了，但分類頁問題"></a>內文頁好了，但分類頁問題</h2><ul>
+<li>內文頁，widget良好顯示於右</li>
+</ul>
+<p><img src="/images/image-20191114100557566.png" alt="內文頁"></p>
+<ul>
+<li><p>分類頁，widget會被壓在底部</p>
+<p><img src="/images/image-20191114100924027.png" alt="image-20191114100924027"></p>
+</li>
+</ul>
+<h2 id="以CSS調整跑版問題"><a href="#以CSS調整跑版問題" class="headerlink" title="以CSS調整跑版問題"></a>以CSS調整跑版問題</h2><h3 id="1-先加："><a href="#1-先加：" class="headerlink" title="1.先加："></a>1.先加：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#secondary&#123;</span><br><span class="line">    top:80px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Widget跑上去了，但Footer未置底、跟它重疊了(因為widget本身有<code>postion:fixed</code>)</p>
+<p><img src="/images/image-20191114101308993.png" alt="image-20191114101308993"></p>
+<h3 id="2-用Flexbox來修，讓Footer在內容少時恆置底；且內容超過一頁長時也能顯示於最下方"><a href="#2-用Flexbox來修，讓Footer在內容少時恆置底；且內容超過一頁長時也能顯示於最下方" class="headerlink" title="2.用Flexbox來修，讓Footer在內容少時恆置底；且內容超過一頁長時也能顯示於最下方"></a>2.用Flexbox來修，讓Footer在內容少時恆置底；且內容超過一頁長時也能顯示於最下方</h3><p>完成品</p>
+<p><img src="/images/image-20191114103223927.png" alt="image-20191114103223927"></p>
+<p><img src="/images/image-20191114103241751.png" alt="image-20191114103241751"></p>
+<h2 id="修正首頁出現重複右側widget的問題"><a href="#修正首頁出現重複右側widget的問題" class="headerlink" title="修正首頁出現重複右側widget的問題"></a>修正首頁出現重複右側widget的問題</h2><p>目前為止的做法，會影響到首頁(index)出現兩個右側widget重疊在一起</p>
+<p><img src="/images/image-20191117224112168.png" alt="image-20191117224112168"></p>
+<p>所以最後要拿掉原本index.swig獨有的widget ( 下圖這行 )</p>
+<p><img src="/images/image-20191117223913673.png" alt="image-20191117223913673"></p>
+<hr>
+
+        </div>
+    
+
+    
+      <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+          <a href="/tags/Hexo/">Hexo</a>
+          
+        </div>
+      
+
+        
+        
+  <nav class="post-nav">
+    
+      <a class="prev" href="/post/39686/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">對Hexo主題-Polarbear的改造(二)</span>
+        <span class="prev-text nav-mobile">Prev</span>
+      </a>
+    
+    
+      <a class="next" href="/post/6985/">
+        <span class="next-text nav-default">Cheatsheat</span>
+        <span class="prev-text nav-mobile">Next</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
+
+        
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+      </footer>
+    
+
+ 
+
+  </article>
+
+    </div>
+    
+
+
+        <div id="secondary">
+    
+
+    
+    <section id="tags" class="widget-area widget_categories">
+        <h3 class="widget-title">Categories</h3>
+        <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/SVG%E7%A0%94%E7%A9%B6/">SVG研究</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%BA%92%E5%8B%95%E7%89%B9%E6%95%88/">互動特效</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%94%9F%E6%B4%BB%E8%A8%98%E4%BA%8B/">生活記事</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%9F%A5%E8%AD%98%E7%AE%A1%E7%90%86/">知識管理</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%B6%B1%E7%AB%99%E6%95%B8%E6%93%9A%E5%88%86%E6%9E%90/">綱站數據分析</a><span class="category-list-count">3</span></li></ul>
+    </section>
+
+
+    
+    <section id="tags" class="widget-area widget_tags">
+        <h3 class="widget-title">Tags</h3>
+        <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B7%A5%E4%BD%9C%E5%B0%88%E6%A1%88/" rel="tag">工作專案</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GA/" rel="tag">GA</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GTM/" rel="tag">GTM</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UX/" rel="tag">UX</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Protopie/" rel="tag">Protopie</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cheatsheet/" rel="tag">cheatsheet</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/markdown/" rel="tag">markdown</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/flexbox/" rel="tag">flexbox</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/animation/" rel="tag">animation</a><span class="tag-list-count">1</span></li></ul>
+    </section>
+
+
+</div>
+
+      </div>
+
+      <footer id="colophon"><span class="copyright-year">
+    
+        &copy;
+    
+        2014 -
+    
+    2019
+    <span class="footer-author">Getter.</span>
+    <span class="power-by">
+        Powered by <a class="hexo-link" href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> and <a class="theme-link" href="https://github.com/frostfan/hexo-theme-polarbear" target="_blank" rel="noopener">Polar Bear</a>
+    </span>
+</span>
+
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+    
+    
+
+
+    
+  
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery-3.1.1.min.js"></script>
+  
+
+  
+    <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
+  
+
+    <script type="text/javascript" src="/js/src/theme.js?v=1.1"></script>
+<script type="text/javascript" src="/js/src/bootstrap.js?v=1.1"></script>
+
+  </body>
+</html>
